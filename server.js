@@ -12,7 +12,7 @@ app.use(bodyParser.json());
 var port = process.env.PORT || 8080;        // set our port
 // API MODELS
 var mongoose   = require('mongoose');
-const uri = "";
+const uri = "mongodb+srv://milk:BzDr8m7W6f4HHrZa@cluster0.wcixp.mongodb.net/main?retryWrites=true&w=majority";
 mongoose.connect(uri, { useNewUrlParser: true, useUnifiedTopology: true }); // connect to our database
 
 var MediaObj     = require('./app/models/media');

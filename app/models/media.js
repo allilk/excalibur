@@ -3,6 +3,7 @@ var Schema      = mongoose.Schema;
 
 var mediaSchema = new Schema({
     name: String,
+    upc: Number,
     year: Number,
     type: {type: String, enum: [
         'VHS','Laserdisc','DVD','Blu-ray',
