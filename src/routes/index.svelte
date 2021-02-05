@@ -27,7 +27,10 @@
     	<p>awaiting...</p>
 	{:then promise}
 		{#each promise as item}
-			{item.name} 
+			<a href="/media/{item._id}">
+				{item.name}
+				
+			</a>
 			<br>
 		{/each}
 	{:catch error}
