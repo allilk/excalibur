@@ -5,7 +5,7 @@ var mediaSchema = new Schema({
     name: String,
     upc: Number,
     year: Number,
-    picture_urls: Array,
+    cover_picture: String,
     type: {type: String, enum: [
         'VHS','Laserdisc','DVD','Blu-ray',
     ]},

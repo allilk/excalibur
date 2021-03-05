@@ -14,7 +14,7 @@ app.use(bodyParser.json());
 var port = process.env.PORT || 8080;        // set our port
 // API MODELS
 var mongoose   = require('mongoose');
-const uri = "mongodb+srv://milk:BzDr8m7W6f4HHrZa@cluster0.wcixp.mongodb.net/main?retryWrites=true&w=majority";
+const uri = "";
 mongoose.connect(uri, { useNewUrlParser: true, useUnifiedTopology: true }); // connect to our database
 
 var MediaObj     = require('./app/models/media');
@@ -47,6 +47,7 @@ router.route('/media')
         media.year = req.body.year;
         media.video.resolution = req.body.resolution;
         media.audio = req.body.audio;
+        media.cover_picture = req.body.cover_picture;
         // save the media and check for errors
         media.save(function(err) {
             if (err)
@@ -84,6 +85,8 @@ router.route('/media/:media_id')
             media.name = req.body.name;  // update the medias info
             media.video.resolution = req.body.resolution;
             media.audio = req.body.audio;
+            media.cover_picture = req.body.cover_picture;
+
             // save the media
             media.save(function(err) {
                 if (err)
@@ -103,6 +106,11 @@ router.route('/media/:media_id')
 
             res.json({ message: 'Successfully deleted' });
         });
+    });
+router.route('/bluray')
+    .get(function(req, res){
+        const resp = MediaObj.find({type: 'Blu-ray'})
+        res.json(resp)
     });
 // START THE SERVER
 // =============================================================================
